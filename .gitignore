@@ -1,0 +1,11 @@
+data/
+.idea/
+cadlib/__pycache__/
+config/__pycache__/
+dataset/__pycache__/
+model/__pycache__/
+proj_log/
+trainer/__pycache__/
+utils/__pycache__/
+evaluation/__pycache__/
+
