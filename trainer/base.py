@@ -3,7 +3,6 @@ import torch
 import torch.optim as optim
 import torch.nn as nn
 from abc import abstractmethod
-# from torch.utils.tensorboard import SummaryWriter
 from tensorboardX import SummaryWriter
 
 
