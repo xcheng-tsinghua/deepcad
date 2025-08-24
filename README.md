@@ -10,7 +10,9 @@ We also release the Onshape CAD data parsing scripts here: [onshape-cad-parser](
 
 ## 环境
 ```
-conda create -n cad python=3.7 -y
+conda create -n deepcad python=3.7 -y
+
+conda activate deepcad
 
 conda install pytorch==1.5.1 torchvision==0.6.1 cudatoolkit=10.2 -c pytorch
 

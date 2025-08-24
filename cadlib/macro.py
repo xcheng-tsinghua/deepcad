@@ -1,3 +1,6 @@
+"""
+定义宏代换
+"""
 import numpy as np
 
 ALL_COMMANDS = ['Line', 'Arc', 'Circle', 'EOS', 'SOL', 'Ext']

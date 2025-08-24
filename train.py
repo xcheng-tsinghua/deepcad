@@ -9,7 +9,7 @@ from trainer import TrainerAE
 
 def main():
     # create experiment cfg containing all hyperparameters
-    cfg = ConfigAE('train')
+    cfg = ConfigAE(True)
 
     # create network and training agent
     tr_agent = TrainerAE(cfg)

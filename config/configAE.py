@@ -7,13 +7,13 @@ from cadlib.macro import *
 
 
 class ConfigAE(object):
-    def __init__(self, phase):
-        self.is_train = phase == "train"
+    def __init__(self, is_train):
+        self.is_train = is_train
 
         self.set_configuration()
 
         # init hyperparameters and parse from command-line
-        parser, args = self.parse()
+        args = self.parse()
 
         # set as attributes
         print("----Experiment Configuration-----")
@@ -23,7 +23,7 @@ class ConfigAE(object):
 
         # experiment paths
         self.exp_dir = os.path.join(self.proj_dir, self.exp_name)
-        if phase == "train" and args.cont is not True and os.path.exists(self.exp_dir):
+        if is_train and args.cont is not True and os.path.exists(self.exp_dir):
             response = input('Experiment log/model already exists, overwrite? (y/n) ')
             if response != 'y':
                 exit()
@@ -102,4 +102,4 @@ class ConfigAE(object):
             parser.add_argument('--z_path', type=str, default=None)
         
         args = parser.parse_args()
-        return parser, args
+        return args

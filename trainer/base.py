@@ -101,17 +101,16 @@ class BaseTrainer(object):
 
     def update_learning_rate(self):
         """record and update learning rate"""
-        # self.train_tb.add_scalar('learning_rate', self.optimizer.param_groups[-1]['lr'], self.clock.epoch)
+        self.train_tb.add_scalar('learning_rate', self.optimizer.param_groups[-1]['lr'], self.clock.epoch)
         self.scheduler.step()
 
     def record_losses(self, loss_dict, mode='train'):
         """record loss to tensorboard"""
         losses_values = {k: v.item() for k, v in loss_dict.items()}
 
-        # tb = self.train_tb if mode == 'train' else self.val_tb
-        # for k, v in losses_values.items():
-        #     tb.add_scalar(k, v, self.clock.step)
-        pass
+        tb = self.train_tb if mode == 'train' else self.val_tb
+        for k, v in losses_values.items():
+            tb.add_scalar(k, v, self.clock.step)
 
     def train_func(self, data):
         """one step of training"""
