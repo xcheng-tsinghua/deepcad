@@ -1,5 +1,4 @@
 import os
-import numpy as np
 import h5py
 from utils import ensure_dir
 from config import ConfigLGAN
