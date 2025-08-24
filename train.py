@@ -1,6 +1,5 @@
 from collections import OrderedDict
 from tqdm import tqdm
-import argparse
 from dataset.cad_dataset import get_dataloader
 from config import ConfigAE
 from utils import cycle
@@ -15,7 +14,7 @@ def main():
     tr_agent = TrainerAE(cfg)
 
     # load from checkpoint if provided
-    if cfg.cont:
+    if eval(cfg.is_load_weight):
         tr_agent.load_ckpt(cfg.ckpt)
 
     # create dataloader
