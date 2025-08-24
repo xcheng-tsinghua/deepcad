@@ -8,7 +8,7 @@ from trainer import TrainerAE
 
 def main():
     # create experiment cfg containing all hyperparameters
-    cfg = ConfigAE(True)
+    cfg = ConfigAE(is_train=True)
 
     # create network and training agent
     tr_agent = TrainerAE(cfg)
@@ -59,3 +59,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+

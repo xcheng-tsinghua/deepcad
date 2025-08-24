@@ -12,7 +12,7 @@ from cadlib.macro import EOS_IDX
 
 def main():
     # create experiment cfg containing all hyperparameters
-    cfg = ConfigAE('test')
+    cfg = ConfigAE(is_train=False)
 
     if cfg.mode == 'rec':
         reconstruct(cfg)
