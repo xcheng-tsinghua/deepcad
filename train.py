@@ -57,8 +57,27 @@ def main():
         tr_agent.save_ckpt('latest')
 
 
+def test_occ_qt():
+    import sys
+    from OCC.Display.SimpleGui import init_display
+
+    print("==== PyQt5 + pyocc-core OpenGL 测试 ====")
+    try:
+        display, start_display, add_menu, add_function_to_menu = init_display("qt-pyqt5")
+        print("[OK] 成功创建 Qt-PyQt5 Display3d 窗口")
+        print("    如果弹出窗口正常显示，说明 OpenGL 初始化成功。")
+        print("    请关闭窗口继续。")
+        start_display()
+    except Exception as e:
+        print("[ERROR] 无法创建 OpenGL 窗口")
+        print("错误信息：", e)
+        sys.exit(1)
+
+
 if __name__ == '__main__':
     main()
+    # test_occ_qt()
+
 
 
 

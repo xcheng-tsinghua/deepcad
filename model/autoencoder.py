@@ -135,6 +135,9 @@ class Bottleneck(nn.Module):
 
 
 class CADTransformer(nn.Module):
+    """
+    自编码器
+    """
     def __init__(self, cfg):
         super(CADTransformer, self).__init__()
 

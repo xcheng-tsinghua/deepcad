@@ -34,8 +34,7 @@ class ConfigAE(object):
 
         # 测试时用
         if not self.is_train:
-            parser.add_argument('-m', '--mode', type=str, choices=['rec', 'enc', 'dec'])
-            parser.add_argument('-o', '--outputs', type=str, default=None)
+            parser.add_argument('--mode', type=str, required=True, choices=['rec', 'enc', 'dec'])
             parser.add_argument('--z_path', type=str, default=None)
 
         args = parser.parse_args()

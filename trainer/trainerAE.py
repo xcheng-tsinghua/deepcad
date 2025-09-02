@@ -21,8 +21,8 @@ class TrainerAE(BaseTrainer):
         self.loss_func = CADLoss(self.cfg).cuda()
 
     def forward(self, data):
-        commands = data['command'].cuda() # (N, S)
-        args = data['args'].cuda()  # (N, S, N_ARGS)
+        commands = data['command'].cuda()  # (N, S) 指令类别
+        args = data['args'].cuda()  # (N, S, N_ARGS) 指令参数
 
         outputs = self.net(commands, args)
         loss_dict = self.loss_func(outputs)

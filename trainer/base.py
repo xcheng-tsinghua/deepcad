@@ -140,7 +140,8 @@ class BaseTrainer(object):
 
 
 class TrainClock(object):
-    """ Clock object to track epoch and step during training
+    """
+    Clock object to track epoch and step during training
     """
     def __init__(self):
         self.epoch = 1

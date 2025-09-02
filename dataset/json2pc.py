@@ -1,3 +1,11 @@
+"""
+将 cad 序列转化为点云
+
+cad 序列存储在 .json 文件中
+先读取 .json 文件，然后将其转化为 OCCT 的 shape
+然后转化为点云
+"""
+
 import os
 import glob
 import json

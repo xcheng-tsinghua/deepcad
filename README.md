@@ -3,7 +3,7 @@
 [DeepCAD: A Deep Generative Network for Computer-Aided Design Models](https://arxiv.org/abs/2105.09492)
 
 <p align="center">
-  <img src='teaser.png' width=600>
+  <img src='figs_readme/teaser.png' width=600>
 </p>
 
 We also release the Onshape CAD data parsing scripts here: [onshape-cad-parser](https://github.com/ChrisWu1997/onshape-cad-parser).
@@ -24,6 +24,32 @@ conda install -c conda-forge pythonocc-core=7.5.1
 ## 数据
 
 下载 [数据集](http://www.cs.columbia.edu/cg/deepcad/data.tar) 直接解压在 deepcad 根目录
+
+## 训练及测试
+```
+# 训练
+
+python train.py  # 训练 AutoEncoder
+```
+<p align="center">
+  <img src='figs_readme/auto_encoder.png' width=400>
+</p>
+
+```
+python test.py --mode enc  # 将数据集全部映射到隐空间，并保存到 .h5 文件
+
+python lgan.py  # 训练 lgan, 用于生成隐空间数据
+
+# 测试
+
+python test.py --mode rec  # 将测试集数据通过自编码器转换为特征，再转换为建模序列，并保存到 .h5 文件
+```
+
+
+
+
+
+
 
 
 ## 其它

@@ -15,7 +15,7 @@ from cadlib.visualize import vec2CADsolid, create_CAD
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--src', type=str, required=True, help="source folder")
+parser.add_argument('--src', type=str, default=r'E:\document\DeepLearning\deepcad\proj_log\newDeepCAD\results', help="source folder")
 parser.add_argument('--form', type=str, default="h5", choices=["h5", "json"], help="file format")
 parser.add_argument('--idx', type=int, default=0, help="show n files starting from idx.")
 parser.add_argument('--num', type=int, default=10, help="number of shapes to show. -1 shows all shapes.")
@@ -38,13 +38,15 @@ def translate_shape(shape, translate):
     return shape
 
 
-display, start_display, add_menu, add_function_to_menu = init_display()
+# display, start_display, add_menu, add_function_to_menu = init_display()
 cnt = 0
 for path in out_paths:
     print(path)
     try:
         if args.form == "h5":
             with h5py.File(path, 'r') as fp:
+                all_key = fp.keys()
+
                 out_vec = fp["out_vec"][:].astype(np.float)
                 out_shape = vec2CADsolid(out_vec)
                 if args.with_gt:
@@ -70,12 +72,13 @@ for path in out_paths:
     out_shape = translate_shape(out_shape, [0, 2 * (cnt % 10), 2 * (cnt // 10)])
     if args.form == "h5" and args.with_gt:
         gt_shape = translate_shape(gt_shape, [-2, 2 * (cnt % 10), 2 * (cnt // 10)])
-        display.DisplayShape([out_shape, gt_shape], update=True)
+        # display.DisplayShape([out_shape, gt_shape], update=True)
     else:
-        display.DisplayShape(out_shape, update=True)
+        # display.DisplayShape(out_shape, update=True)
+        pass
 
     cnt += 1
 
-start_display()
+# start_display()
 
 

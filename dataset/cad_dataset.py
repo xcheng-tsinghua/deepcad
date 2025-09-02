@@ -36,6 +36,13 @@ class CADDataset(Dataset):
         return self.__getitem__(idx)
 
     def __getitem__(self, index):
+        """
+        读取 .h5 文件并返回
+        .h5 文件包含一个 [n, 17] 的矩阵，表示 n 个指令，第一列表示指令类别，剩下 16 个数表示指令参数
+
+        return: "command": [n, ] (指令类别), [n, 16] (指令参数)
+        """
+
         data_id = self.all_data[index]
         h5_path = os.path.join(self.raw_data, data_id + ".h5")
         with h5py.File(h5_path, "r") as fp:
@@ -82,3 +89,4 @@ class CADDataset(Dataset):
 
     def __len__(self):
         return len(self.all_data)
+

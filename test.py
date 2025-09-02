@@ -36,9 +36,8 @@ def reconstruct(cfg):
     test_loader = get_dataloader('test', cfg)
     print("Total number of test data:", len(test_loader))
 
-    if cfg.outputs is None:
-        cfg.outputs = "{}/results/test_{}".format(cfg.exp_dir, cfg.ckpt)
-    ensure_dir(cfg.outputs)
+    output_dir = os.path.join(cfg.exp_dir, 'results', f'test_{cfg.ckpt}')
+    os.makedirs(output_dir, exist_ok=True)
 
     # evaluate
     pbar = tqdm(test_loader)
@@ -58,10 +57,10 @@ def reconstruct(cfg):
 
             data_id = data["id"][j].split('/')[-1]
 
-            save_path = os.path.join(cfg.outputs, '{}_vec.h5'.format(data_id))
+            save_path = os.path.join(output_dir, f'{data_id}_vec.h5')
             with h5py.File(save_path, 'w') as fp:
-                fp.create_dataset('out_vec', data=out_vec[:seq_len], dtype=np.int)
-                fp.create_dataset('gt_vec', data=gt_vec[j][:seq_len], dtype=np.int)
+                fp.create_dataset('out_vec', data=out_vec[:seq_len], dtype=np.int32)
+                fp.create_dataset('gt_vec', data=gt_vec[j][:seq_len], dtype=np.int32)
 
 
 def encode(cfg):

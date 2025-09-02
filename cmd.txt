@@ -1,5 +1,5 @@
 
-cd /opt/data/private/networks/deepcad/ && conda activate dp
+cd /opt/data/private/networks/deepcad/ && conda activate deepcad
 
 git status && git add . && git commit -m "change" && git push
 
